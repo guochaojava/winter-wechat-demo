@@ -11,6 +11,15 @@
 	<name>winter-wechat-demo</name>
 	<description>Demo project for Spring Boot</description>
 
+	<repositories>
+		<!-- 私有仓库 -->
+		<repository>
+			<id>public</id>  <!--这个ID需要与你的组group ID一致-->
+			<name>Public Repository</name>
+			<url>http://192.168.1.146:8081/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -37,9 +46,9 @@
 		</dependency>
 		<!-- winter-wechat -->
 		<dependency>
-			<groupId>com.github.guochaojava</groupId>
+			<groupId>com.lgd.winter</groupId>
 			<artifactId>winter-wechat</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.2</version>
 		</dependency>
 	</dependencies>
 

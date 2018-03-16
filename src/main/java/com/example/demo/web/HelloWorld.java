@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.lgd.winter.wechat.config.BaseConfig;
 import com.lgd.winter.wechat.core.WeChatTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +21,18 @@ public class HelloWorld {
 
     @GetMapping("/accessToken")
     public String hello() {
-        return weChatTemplate.getAccessToken();
+        return weChatTemplate.opsForTecent().getAccessToken();
     }
 
     @PostMapping("/userInfo")
     public String userInfo(String accessToken, String openId) {
-        return weChatTemplate.getUserInfo(accessToken, openId);
+        return weChatTemplate.opsForTecent().getUserInfo(accessToken, openId);
     }
 
+    @GetMapping("/init/accessToken")
+    public String init() {
+        BaseConfig baseConfig = new BaseConfig("wxb22641dd853c4fdf","d3a79d6c62c468d9d25b665b26500b5a");
+        WeChatTemplate template = new WeChatTemplate(baseConfig);
+        return template.opsForTecent().getAccessToken();
+    }
 }
